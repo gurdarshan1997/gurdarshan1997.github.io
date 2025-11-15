@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gurdarshan Singh | Portfolio</title>
+
+  <style>
+    /* ============ THEME TOKENS ============ */
+    :root {
+      --bg: #020617;
+      --bg-alt: #020617;
+      --text: #e5e7eb;
+      --text-muted: #9ca3af;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96, 165, 250, 0.18);
+      --border: #1f2937;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+      --radius-lg: 18px;
+    }
+
+    [data-theme="light"] {
+      --bg: #f5f5f5;
+      --bg-alt: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.12);
+      --border: #e5e7eb;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+
+    /* ============ RESET ============ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(37, 99, 235, 0.18), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ============ LAYOUT SHELL ============ */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 64px;
+    }
+
+    /* ============ HEADER ============ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .site-header__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.05rem;
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.5);
+    }
+
+    .brand__text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand__name {
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      font-size: 0.96rem;
+    }
+
+    .brand__role {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .header-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .nav__link {
+      padding: 6px 4px;
+      color: var(--text-muted);
+      position: relative;
+    }
+
+    .nav__link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.18s ease-out;
+    }
+
+    .nav__link:hover {
+      color: var(--text);
+    }
+
+    .nav__link:hover::after {
+      transform: scaleX(1);
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.2);
+      cursor: pointer;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .theme-toggle span[aria-hidden="true"] {
+      font-size: 1rem;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(148, 163, 184, 0.16);
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 0 60px;
+    }
+
+    .hero-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .hero-kicker {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 4vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .btn--primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.65);
+    }
+
+    .btn--primary:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.5);
+    }
+
+    .btn--ghost:hover {
+      background: rgba(148, 163, 184, 0.1);
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 6px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta span strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ============ GENERIC SECTIONS ============ */
+    .section {
+      padding: 80px 0 70px;
+    }
+
+    .section--panel {
+      background: radial-gradient(circle at top, var(--accent-soft), transparent 75%);
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .section-heading__kicker {
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .section-heading__title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .section-heading__subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .panel {
+      max-width: 1100px;
+      margin: 0 auto;
+      border-radius: 26px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.96));
+      box-shadow: var(--shadow);
+      padding: 32px 28px;
+    }
+
+    .panel p {
+      color: var(--text-muted);
+      font-size: 0.97rem;
+    }
+
+    /* ABOUT LINKS */
+    .about-links {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 0.9rem;
+    }
+
+    .about-links a {
+      color: var(--accent);
+    }
+
+    .about-links span {
+      color: var(--text-muted);
+    }
+
+    /* ============ EXPERIENCE ============ */
+    .exp-list {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 18px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .exp-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .exp-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .exp-company {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .exp-meta {
+      text-align: right;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .exp-bullets {
+      list-style: none;
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .exp-bullets li {
+      position: relative;
+      padding-left: 1.2em;
+      margin-bottom: 4px;
+    }
+
+    .exp-bullets li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.3);
+      white-space: nowrap;
+    }
+
+    /* ============ PORTFOLIO (PROJECTS) ============ */
+    .projects-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 18px 16px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .card__header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .card__title {
+      font-size: 1rem;
+      font-weight: 550;
+    }
+
+    .card__meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .card__body {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .card__body ul {
+      list-style: none;
+      margin-top: 4px;
+    }
+
+    .card__body li {
+      position: relative;
+      padding-left: 1.1em;
+      margin-bottom: 3px;
+    }
+
+    .card__body li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .project-image {
+      margin-top: 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .project-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Academic projects stacked under same heading */
+    .section-subheading {
+      max-width: 1100px;
+      margin: 40px auto 18px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    /* ============ SKILLS ============ */
+    .skills-layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      font-size: 0.8rem;
+    }
+
+    .skills-chip {
+      padding: 6px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.3);
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ============ EDUCATION + CERTS ============ */
+    .edu-grid {
+      max-width: 1100px;
+      margin: 0 auto 32px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .certifications-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .cert-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 12px;
+      background: rgba(15, 23, 42, 0.95);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: 0.15s ease;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
+    }
+
+    .cert-card:hover {
+      transform: translateY(-3px);
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    .cert-card img {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .cert-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .cert-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ============ CONTACT ============ */
+    .contact-panel {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .contact-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .contact-value a {
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 900px) {
+      .exp-item {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .exp-meta {
+        text-align: left;
+      }
+      .site-header__inner {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding-top: 72px;
+      }
+      .hero-title {
+        font-size: 2.1rem;
+      }
+      .skills-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <div class="brand">
+      <div class="brand__avatar">GS</div>
+      <div class="brand__text">
+        <div class="brand__name">Gurdarshan Singh</div>
+        <div class="brand__role">Data & Business Analyst</div>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <nav class="nav">
+        <a href="#home" class="nav__link">Home</a>
+        <a href="#about" class="nav__link">About</a>
+        <a href="#experience" class="nav__link">Experience</a>
+        <a href="#portfolio" class="nav__link">Portfolio</a>
+        <a href="#certifications" class="nav__link">Certifications</a>
+        <a href="#contact" class="nav__link">Contact</a>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <span id="theme-icon" aria-hidden="true">🌙</span>
+        <span id="theme-text">Dark mode</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+           <h1 class="hero-title">HELLO, I'M GURDARSHAN</h1>
+      <p class="hero-subtitle">
+        I turn raw operational data into clean datasets, dashboards, and automated workflows
+        that help teams make faster, better decisions.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#experience" class="btn btn--primary">View Experience</a>
+        <a href="#portfolio" class="btn btn--ghost">View Projects</a>
+      </div>
+
+      <div class="hero-meta">
+        <span><strong>Location:</strong> Winnipeg, MB, Canada</span>
+        <span><strong>Status:</strong> Open to Work</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section section--panel">
+    <div class="section-heading">
+      <div class="section-heading__kicker">About me</div>
+      <h2 class="section-heading__title">Who I Am</h2>
+    </div>
+
+    <div class="panel">
+      <p>
+        I’m a Data & Business Analyst with a postgraduate diploma in Predictive Analytics from the
+        University of Winnipeg and hands-on experience working with operational logistics data.
+        I’m comfortable pulling data with SQL, cleaning and transforming it in Python and Excel, and
+        building dashboards in Power BI that answer real business questions.
+      </p>
+      <p style="margin-top:14px;">
+        Recently, I completed a Traffic / Rate Analyst co-op with Gardewine, where I worked with shipment,
+        route and rate data, automated analysis workflows, and experimented with routing optimization.
+        My academic projects focus on end-to-end pipelines: from ETL and streaming data into databases,
+        to machine-learning models and front-end dashboards.
+      </p>
+
+      <div class="about-links">
+        <a href="https://www.linkedin.com/in/gurdarshan-singh-a32b36259" target="_blank" rel="noreferrer">LinkedIn</a>
+        <span>|</span>
+        <a href="https://www.github.com/gurdarshan1997" target="_blank" rel="noreferrer">GitHub</a>
+        <span>|</span>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience" class="section">
+    <div class="section-heading">
+      <div class="section-heading__kicker">My experience</div>
+      <h2 class="section-heading__title">Where I’ve Worked</h2>
+      <p class="section-heading__subtitle">
+        Recent co-op and industry experience working with logistics, operations, and internal analytics projects.
+      </p>
+    </div>
+
+    <div class="exp-list">
+      <div class="exp-item">
+        <div>
+          <div class="exp-title">Traffic / Rate Analyst Co-op</div>
+          <div class="exp-company">Gardewine · Winnipeg, MB</div>
+          <ul class="exp-bullets">
+            <li>Pulled and cleaned operational data (shipments, routes, rates) to support daily decision-making.</li>
+            <li>Built Excel and Python-based analyses to answer ad-hoc questions on volume, cost, and performance trends.</li>
+            <li>Collaborated with operations and management to translate vague questions into concrete metrics and reports.</li>
+          </ul>
+          <div class="tags-row">
+            <span class="pill">Excel / CSV wrangling</span>
+            <span class="pill">Logistics data</span>
+            <span class="pill">Ad-hoc analysis</span>
+          </div>
+        </div>
+        <div class="exp-meta">
+          <div>Aug 2025 – Sep 2025</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div>
+          <div class="exp-title">Python / MATLAB Developer</div>
+          <div class="exp-company">iBrandizer · India</div>
+          <ul class="exp-bullets">
+            <li>Developed and maintained data processing and analysis scripts in Python and MATLAB.</li>
+            <li>Implemented data cleaning, transformation, and reporting logic for internal projects.</li>
+            <li>Used basic version control and software-development practices to keep analyses reproducible.</li>
+          </ul>
+          <div class="tags-row">
+            <span class="pill">Python</span>
+            <span class="pill">MATLAB</span>
+            <span class="pill">Data pipelines</span>
+          </div>
+        </div>
+        <div class="exp-meta">
+          <div>~3 years</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PORTFOLIO (FEATURED + ACADEMIC) ===== -->
+  <section id="portfolio" class="section section--panel">
+    <div class="section-heading">
+      <div class="section-heading__kicker">My portfolio</div>
+      <h2 class="section-heading__title">Selected Projects</h2>
+      <p class="section-heading__subtitle">
+        A mix of professional-style and academic projects covering routing, ETL, streaming data, and dashboards.
+      </p>
+    </div>
+
+    <!-- Featured projects -->
+    <div class="projects-grid">
+      <!-- PROJECT 1 -->
+      <article class="card">
+        <div class="card__header">
+          <h3 class="card__title">End-to-End Analytics Mini-Projects</h3>
+          <div class="card__meta">SQL · Power BI · Machine Learning</div>
+        </div>
+        <div class="card__body">
+          <ul>
+            <li>Completed multiple mini-projects taking raw datasets (crime, sales, fitness, traffic) through cleaning, modelling, and reporting.</li>
+            <li>Used SQL and Python to join, aggregate, and transform large tables before analysis.</li>
+            <li>Built dashboards and visual reports to communicate key trends and recommendations to non-technical stakeholders.</li>
+          </ul>
+          <div class="tags-row">
+            <span class="pill">SQL</span>
+            <span class="pill">Power BI / dashboards</span>
+            <span class="pill">Exploratory data analysis</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 2 -->
+      <article class="card">
+        <div class="card__header">
+          <h3 class="card__title">ETL Pipelines & Streaming Assignments</h3>
+          <div class="card__meta">Bash · Airflow · Kafka · SQL</div>
+        </div>
+        <div class="card__body">
+          <ul>
+            <li>Designed small ETL pipelines to extract CSV/API data, clean and reshape it, and load into PostgreSQL / BigQuery.</li>
+            <li>Used Airflow-style DAGs and scripted workflows to schedule recurring data refreshes.</li>
+            <li>Experimented with streaming data (weather, traffic-style feeds) to simulate near real-time reporting use cases.</li>
+          </ul>
+          <div class="tags-row">
+            <span class="pill">Airflow DAGs</span>
+            <span class="pill">PostgreSQL</span>
+            <span class="pill">Data quality checks</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Academic projects -->
+    <div class="section-subheading">Academic Projects</div>
+    <div class="projects-grid">
+      <article class="card">
+        <div class="card__header">
+          <h3 class="card__title">Operations Optimization – Routing & Scheduling Analysis</h3>
+          <div class="card__meta">Python · Geospatial · Operations</div>
+        </div>
+        <div class="card__body">
+          <ul>
+            <li>Analyzed real-world stop and route data to reduce redundant travel and improve visit sequencing.</li>
+            <li>Built a Python script that calculated distances between locations and generated more efficient routes.</li>
+            <li>Produced an interactive map and summary report that can be adapted to other field / service operations.</li>
+          </ul>
+          <div class="tags-row">
+            <span class="pill">Python</span>
+            <span class="pill">Geospatial analysis</span>
+            <span class="pill">Operations optimization</span>
+          </div>
+          <div class="project-image">
+            <img src="assets/img/academic/route-optimizer.png"
+                 alt="Routing & Scheduling Analysis">
+          </div>
+        </div>
+      </article>
+      <!-- Chicago Crime -->
+      <article class="card">
+        <div class="card__header">
+          <h3 class="card__title">Chicago Crime – Dataprep Cleaning & BigQuery Analysis</h3>
+          <div class="card__meta">Dataprep · BigQuery · Looker</div>
+        </div>
+        <div class="card__body">
+          <ul>
+            <li>Profiled ~8.3M rows of crime data, removed duplicates, and standardized dates, booleans, and location fields.</li>
+            <li>Engineered features such as time of day, weekday, and crime severity to support richer analysis.</li>
+            <li>Exported the cleaned dataset to BigQuery and explored hotspots, temporal patterns, and null-value discrepancies.</li>
+          </ul>
+          <div class="tags-row">
+            <span class="pill">Data cleaning</span>
+            <span class="pill">Feature engineering</span>
+            <span class="pill">BigQuery SQL</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- E-commerce Power BI -->
+      <article class="card">
+        <div class="card__header">
+          <h3 class="card__title">E-commerce Orders – End-to-End Power BI Dashboard</h3>
+          <div class="card__meta">Power BI · DAX · Data Visualization</div>
+        </div>
+        <div class="card__body">
+          <ul>
+            <li>Built a multi-page dashboard summarizing orders, GMV, delivery performance, payments, and reviews.</li>
+            <li>Designed visuals for trends by month, category, geography, payment type, and customer behaviour.</li>
+            <li>Documented key insights such as seasonality, late-delivery hotspots, and high-value customer segments.</li>
+          </ul>
+          <div class="tags-row">
+            <span class="pill">Dashboarding</span>
+            <span class="pill">Business insights</span>
+            <span class="pill">DAX measures</span>
+          </div>
+          <div class="project-image">
+            <img src="assets/img/academic/powerbi-ecommerce.png"
+                 alt="Power BI dashboard for E-commerce orders project">
+          </div>
+        </div>
+      </article>
+
+      <!-- Airflow Traffic -->
+      <article class="card">
+        <div class="card__header">
+          <h3 class="card__title">Traffic Data ETL Pipeline with Apache Airflow</h3>
+          <div class="card__meta">Airflow · Bash · ETL</div>
+        </div>
+        <div class="card__body">
+          <ul>
+            <li>Designed a DAG to download, extract, and process CSV, TSV, and fixed-width traffic data on a daily schedule.</li>
+            <li>Combined multiple raw files into a single transformed dataset with standardized columns.</li>
+            <li>Monitored task durations and run history using Airflow’s Graph, Gantt, and Task Duration views.</li>
+          </ul>
+          <div class="tags-row">
+            <span class="pill">Orchestration</span>
+            <span class="pill">File-based ETL</span>
+            <span class="pill">Automation</span>
+          </div>
+          <div class="project-image">
+            <img src="assets/img/academic/airflow-dag.png"
+                 alt="Airflow DAG for Traffic Data ETL pipeline">
+          </div>
+        </div>
+      </article>
+
+      <!-- Dataflow Taxi -->
+      <article class="card">
+        <div class="card__header">
+          <h3 class="card__title">Real-Time Taxi Streaming with Dataflow & Pub/Sub</h3>
+          <div class="card__meta">Dataflow · Pub/Sub · BigQuery · Looker Studio</div>
+        </div>
+        <div class="card__body">
+          <ul>
+            <li>Connected a public Pub/Sub topic of NYC taxi rides to a Dataflow streaming job writing into a partitioned BigQuery table.</li>
+            <li>Validated throughput (~29k events/min) and low latency from ingestion to storage.</li>
+            <li>Built a Looker Studio bubble map that refreshed every minute to visualize passenger density across the city.</li>
+          </ul>
+          <div class="tags-row">
+            <span class="pill">Streaming analytics</span>
+            <span class="pill">Pub/Sub</span>
+            <span class="pill">Real-time dashboards</span>
+          </div>
+          <div class="project-image">
+            <img src="assets/img/academic/dataflow-pipeline.png"
+                 alt="Google Cloud Dataflow real-time taxi streaming pipeline">
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="section">
+    <div class="section-heading">
+      <div class="section-heading__kicker">Skills</div>
+      <h2 class="section-heading__title">What I Work With</h2>
+    </div>
+
+    <div class="skills-layout">
+      <div class="card">
+        <div class="section-heading__subtitle" style="margin-bottom:10px;">Technical</div>
+        <div class="skills-grid">
+        <span class="skills-chip">Python</span>
+        <span class="skills-chip">SQL</span>
+        <span class="skills-chip">Power BI</span>
+        <span class="skills-chip">Excel (advanced)</span>
+
+        <span class="skills-chip">PostgreSQL</span>
+        <span class="skills-chip">MongoDB</span>
+        <span class="skills-chip">BigQuery</span>
+        <span class="skills-chip">Looker Studio</span>
+
+        <span class="skills-chip">Airflow (basics)</span>
+        <span class="skills-chip">Kafka (basics)</span>
+        <span class="skills-chip">GCP Dataflow / Pub/Sub</span>
+        <span class="skills-chip">Git</span>
+
+        <span class="skills-chip">SAP Analytics Cloud (basic)</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-heading__subtitle" style="margin-bottom:10px;">Domain & soft skills</div>
+        <div class="skills-grid">
+          <span class="skills-chip">Logistics / LTL basics</span>
+          <span class="skills-chip">Problem solving</span>
+          <span class="skills-chip">Ad-hoc analysis</span>
+          <span class="skills-chip">Stakeholder communication</span>
+          <span class="skills-chip">Documentation</span>
+          <span class="skills-chip">Time management</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION + CERTS ===== -->
+  <section id="certifications" class="section section--panel">
+    <div class="section-heading">
+      <div class="section-heading__kicker">Education & certifications</div>
+      <h2 class="section-heading__title">How I Learned</h2>
+    </div>
+
+    <div class="edu-grid">
+      <article class="card">
+        <div class="card__header">
+          <h3 class="card__title">Postgraduate Diploma – Predictive Analytics</h3>
+          <div class="card__meta">University of Winnipeg · 2024 – 2025</div>
+        </div>
+        <div class="card__body">
+          <p class="section-heading__subtitle" style="margin-bottom:6px;">Key areas:</p>
+          <ul>
+            <li>Machine learning (classification, regression, clustering).</li>
+            <li>Data acquisition, ETL, and database management.</li>
+            <li>Visualization and dashboarding with industry tools.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__header">
+          <h3 class="card__title">Bachelor’s in Electrical Engineering</h3>
+          <div class="card__meta">India · Completed</div>
+        </div>
+        <div class="card__body">
+          <p class="section-heading__subtitle">Foundation in math, systems, and problem solving.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="section-heading__subtitle" style="text-align:center;margin-top:10px;margin-bottom:16px;">
+      Industry-recognized credentials in Python, SQL, analytics, and cloud tools.
+    </div>
+
+    <div class="certifications-grid">
+      <div class="cert-card">
+        <img src="assets/img/certs/kaggle-python.png" alt="Kaggle Python Course certificate">
+        <div class="cert-title">Kaggle Python Course</div>
+        <div class="cert-meta">Dec 2022</div>
+      </div>
+
+      <div class="cert-card">
+        <img src="assets/img/certs/ibm-python.png" alt="IBM Python 101 for Data Science certificate">
+        <div class="cert-title">Python 101 for Data Science (IBM)</div>
+        <div class="cert-meta">Mar 2023</div>
+      </div>
+
+      <div class="cert-card">
+        <img src="assets/img/certs/hackerrank-python.png" alt="HackerRank Python Basic certificate">
+        <div class="cert-title">HackerRank Skills Certification: Python (Basic)</div>
+        <div class="cert-meta">Mar 2023</div>
+      </div>
+
+      <div class="cert-card">
+        <img src="assets/img/certs/hackerrank-sql.png" alt="HackerRank SQL Basic certificate">
+        <div class="cert-title">HackerRank Certification: SQL (Basic)</div>
+        <div class="cert-meta">June 2025</div>
+      </div>
+
+      <div class="cert-card">
+        <img src="assets/img/certs/deloitte-forage.png" alt="Deloitte Australia Data Analytics Job Simulation certificate">
+        <div class="cert-title">Deloitte Australia Data Analytics Job Simulation (Forage)</div>
+        <div class="cert-meta">July 2025</div>
+      </div>
+
+      <div class="cert-card">
+        <img src="assets/img/certs/sap-analytics-cloud.png" alt="Exploring SAP Analytics Cloud certificate">
+        <div class="cert-title">Exploring SAP Analytics Cloud</div>
+        <div class="cert-meta">Sep 2025</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section">
+    <div class="section-heading">
+      <div class="section-heading__kicker">My contacts</div>
+      <h2 class="section-heading__title">Let’s Talk</h2>
+      <p class="section-heading__subtitle">
+        If you’re hiring for data / BI roles or want to discuss a project, feel free to reach out.
+      </p>
+    </div>
+
+    <div class="contact-panel">
+      <div class="card">
+        <p>I’m open to opportunities in Winnipeg and remote roles across Canada.</p>
+        <div class="contact-grid">
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">
+              <a href="mailto:guruthemr.singh@gmail.com">guruthemr.singh@gmail.com</a>
+            </div>
+          </div>
+          <div>
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Winnipeg, MB, Canada</div>
+          </div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">
+              <a href="https://www.linkedin.com/in/gurdarshan-singh-a32b36259"
+                 target="_blank" rel="noreferrer">
+                linkedin.com/in/gurdarshan-singh-a32b36259
+              </a>
+            </div>
+          </div>
+          <div>
+            <div class="contact-label">GitHub / Portfolio</div>
+            <div class="contact-value">
+              <a href="https://www.github.com/gurdarshan1997"
+                 target="_blank" rel="noreferrer">
+                github.com/gurdarshan1997
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Gurdarshan Singh
+  </footer>
+</div>
+
+
+<script>
+  const root = document.documentElement;
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = document.getElementById("theme-icon");
+  const themeText = document.getElementById("theme-text");
+
+  function applyTheme(theme) {
+    root.setAttribute("data-theme", theme);
+    localStorage.setItem("gs-theme", theme);
+
+    if (theme === "dark") {
+      themeIcon.textContent = "☀️";
+      themeText.textContent = "Light mode";
+    } else {
+      themeIcon.textContent = "🌙";
+      themeText.textContent = "Dark mode";
+    }
+  }
+
+  // DEFAULT = DARK if nothing stored
+  (function initTheme() {
+    const stored = localStorage.getItem("gs-theme");
+    if (stored === "dark" || stored === "light") {
+      applyTheme(stored);
+      return;
+    }
+    // No stored preference → force dark
+    applyTheme("dark");
+  })();
+
+  themeToggle.addEventListener("click", () => {
+    const current = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+    applyTheme(current === "dark" ? "light" : "dark");
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
