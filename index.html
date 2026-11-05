@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!--CONTENT-START-->
+<title>Gurdarshan Singh Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Gurdarshan Singh — Data & Business Analyst in Winnipeg. Power BI dashboards, SQL, Python, ETL pipelines and streaming projects.">
+<meta property="og:title" content="Gurdarshan Singh — Data & Business Analyst">
+<meta property="og:description" content="Power BI dashboards, SQL, Python, ETL and streaming projects. Winnipeg, MB.">
+<meta property="og:image" content="assets/img/brand/og-image.png">
+<link rel="icon" href="assets/img/brand/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;650;700;750&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="nav__brand" href="#top"><span class="nav__mark" data-bind="initials">GS</span><span data-bind="name">Gurdarshan Singh</span></a>
+      <ul class="nav__links" id="navLinks"></ul>
+      <div style="display:flex;gap:.5rem;align-items:center">
+        <span class="clock" aria-label="Local time in Winnipeg">Winnipeg <b id="clockTime">--:--</b><i class="clock__sep"></i><span class="clock__date" id="clockDate"></span></span>
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu" hidden></div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero wrap" id="top">
+    <div class="panel">
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <span class="eyebrow" data-bind="headline">Data &amp; Business Analyst</span>
+          <h1>Hi, I'm <span data-bind="firstName">Gurdarshan</span>.<span class="hero__iam">I am a</span></h1>
+          <div class="flip" aria-live="polite">
+            <div class="flip__rings" aria-hidden="true" id="rings"></div>
+            <div class="flip__stack">
+              <div class="flip__page" id="flipPage"><span class="flip__word" id="flipWord">Data Analyst</span><span class="flip__count" id="flipCount">01 / 05</span></div>
+            </div>
+          </div>
+          <p class="hero__tag" data-bind="tagline"></p>
+          <div class="hero__actions">
+            <a class="btn btn--dark" href="#contact">Hire me <span class="btn__arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="#work">See my work</a>
+          </div>
+        </div>
+        <figure class="hero__figure" id="heroFigure" style="margin:0">
+          <img id="heroImg" src="assets/img/portrait/portrait-hero.webp" width="640" height="1120" alt="Gurdarshan Singh in a light mint suit and green turban">
+          <button class="ability-btn" id="abilityBtn" type="button"><span></span>My ability card</button>
+        </figure>
+      </div>
+      <div class="hero__foot">
+        <span class="mono"><i class="dot-live"></i><span data-bind="status">Open to work</span></span>
+        <a class="mono" href="#work">Scroll to explore ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOORS -->
+  <section class="section wrap" id="work">
+    <div class="section__head">
+      <span class="eyebrow">My work, one door per skill</span>
+      <div class="section__row">
+        <h2>Every dataset ships<span class="muted">from a loading dock.</span></h2>
+        <p class="muted" style="max-width:34ch">Five dock doors, one for each kind of work. Open one to see the projects loaded inside.</p>
+      </div>
+    </div>
+    <div class="dock-scroll"><div class="dock" id="dock"></div></div>
+    <p class="dock-hint">Swipe along the dock →</p>
+  </section>
+
+  <div class="tools" aria-label="Tools I work with"><div class="tools__track" id="tools"></div></div>
+
+  <!-- STORY -->
+  <section class="section story wrap" id="story">
+    <div class="story__grid">
+      <div class="story__sticky">
+        <span class="eyebrow">My story</span>
+        <h2>Let's go back in time.</h2>
+        <div class="story__mark" id="storyMark" aria-hidden="true"><span>2026</span></div>
+        <span class="mono" id="storyWhen">Now</span>
+        <div class="story__progress"><span><b id="storyIdx">01</b> / <span id="storyTotal">05</span></span><span class="story__bar"><i id="storyBar"></i></span></div>
+      </div>
+      <ol class="timeline" id="timeline"></ol>
+    </div>
+  </section>
+</main>
+
+<!-- CONTACT -->
+<footer class="contact" id="contact">
+  <div class="night">
+    <div class="wrap">
+      <span class="eyebrow">Open to data &amp; BI roles</span>
+      <h2>Got data that needs answers?<span class="dim">Let's work it out.</span></h2>
+      <p data-bind="availability"></p>
+      <div class="hero__actions">
+        <a class="btn btn--dark" id="mailBtn" href="#">Email me <span class="btn__arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" id="liBtn" href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn--ghost" id="ghBtn" href="#" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="email-copy"><span id="emailText"></span><button type="button" id="copyEmail">Copy email</button></div>
+      <div class="foot">
+        <div><h4>Work</h4><ul class="cols" id="footWork"></ul></div>
+        <div><h4>Navigate</h4><ul><li><a href="#top">Home</a></li><li><a href="#story">My story</a></li><li><a href="#contact">Contact</a></li></ul></div>
+        <div><h4>Status</h4><ul><li data-bind="status"></li><li data-bind="location"></li><li>Local time <span id="footTime"></span></li></ul></div>
+      </div>
+      <div class="legal"><span>© <span id="year"></span> <span data-bind="name"></span>. Designed and built by Gurdarshan.</span><a href="#top">Back to top ↑</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- dialogs -->
+<dialog class="room" id="room" aria-labelledby="roomTitle">
+  <div class="room__bar"><div class="wrap"><button class="btn btn--ghost" type="button" id="roomClose">← Back to the doors</button><span class="mono muted" id="roomDoor"></span></div></div>
+  <div class="wrap">
+    <div class="room__head"><span class="eyebrow" id="roomKicker"></span><h2 id="roomTitle"></h2><p id="roomBlurb"></p></div>
+    <div id="roomBody"></div>
+  </div>
+</dialog>
+
+<dialog class="ability" id="ability" aria-label="Ability card">
+  <div class="acard"><div class="acard__in" id="acard"></div></div>
+</dialog>
+
+<dialog class="lightbox" id="lightbox" aria-label="Image preview">
+  <img id="lightImg" alt="">
+  <button class="btn btn--dark" type="button" id="lightClose" style="padding:0 1rem">Close</button>
+</dialog>
+
+<script src="assets/data/content.js"></script>
+<script src="assets/data/kpis.js"></script>
+<script src="assets/js/site.js"></script>
+<!--CONTENT-END-->
+</body>
+</html>
