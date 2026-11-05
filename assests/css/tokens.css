@@ -1,0 +1,77 @@
+/* ────────────────────────────────────────────────────────────────
+   THEME TOKENS — swap this one file to re-theme the whole site.
+   Layout concept: paper hero panel on a stone ground → a row of
+   numbered loading-dock doors (one per skill) → sticky time-travel
+   timeline → night-shift contact panel.
+   ──────────────────────────────────────────────────────────────── */
+:root {
+  /* colour */
+  --ground: #E3E3DD;        /* page behind panels */
+  --paper: #F1F0EB;         /* main panels */
+  --paper-2: #E9E8E2;       /* insets, chips */
+  --ink: #171917;           /* text, primary buttons */
+  --ink-2: #5E625D;         /* secondary text */
+  --mute: #9A9D97;          /* tertiary / inactive timeline */
+  --line: rgba(23, 25, 23, .10);
+  --accent: #1E6B50;        /* turban green */
+  --accent-soft: rgba(30, 107, 80, .14);
+  --glow-a: rgba(30, 107, 80, .16);
+  --glow-b: rgba(214, 160, 92, .20);
+  --hazard: #E3B23C;        /* dock bumper stripe — used only on doors */
+  --door: #C9CBC5;          /* roll-up door steel */
+  --door-1: #9FB5A5; --door-2: #9DAABA; --door-3: #CBB27C; --door-4: #C2927F; --door-5: #8F938D;
+  --paint: rgba(255, 255, 255, .82);
+  --lamp-off: #B9BBB4;
+  --door-dark: #A9ACA5;
+  --frame: #D7D7D0;
+  --inside: #1B1E1B;        /* inside the trailer */
+  --inside-fg: #EDEDE7;
+  --night: #161816;         /* contact panel */
+  --night-fg: #EDEDE7;
+  --night-mute: #6F736D;
+  --shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 24px 60px -30px rgba(23,25,23,.35);
+
+  /* type */
+  --font-display: "Geist", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Geist", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --fs-xs: .75rem; --fs-sm: .875rem; --fs-md: 1rem; --fs-lg: 1.25rem;
+  --fs-xl: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+  --fs-2xl: clamp(2.4rem, 1.6rem + 3.6vw, 4.6rem);
+  --fs-3xl: clamp(4rem, 2rem + 8vw, 9.5rem);
+
+  /* shape & motion */
+  --r-panel: 28px; --r-card: 18px; --r-pill: 999px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #0E100E; --paper: #171A17; --paper-2: #20231F;
+    --ink: #ECECE6; --ink-2: #A6AAA3; --mute: #61655F; --line: rgba(236,236,230,.10);
+    --accent: #5BBF95; --accent-soft: rgba(91,191,149,.16);
+    --glow-a: rgba(91,191,149,.10); --glow-b: rgba(214,160,92,.10);
+    --hazard: #D9A93A; --door: #3A3E39; --door-dark: #2C302B; --frame: #262925;
+    --inside: #0B0C0B; --inside-fg: #ECECE6;
+    --door-1: #3C4C41; --door-2: #3A4451; --door-3: #5B4E30; --door-4: #563C33; --door-5: #3B3E3A;
+    --paint: rgba(236, 236, 230, .62);
+    --lamp-off: #2E322D;
+    --night: #0A0B0A; --night-fg: #ECECE6; --night-mute: #6F736D;
+    --shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 24px 60px -30px rgba(0,0,0,.8);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #0E100E; --paper: #171A17; --paper-2: #20231F;
+  --ink: #ECECE6; --ink-2: #A6AAA3; --mute: #61655F; --line: rgba(236,236,230,.10);
+  --accent: #5BBF95; --accent-soft: rgba(91,191,149,.16);
+  --glow-a: rgba(91,191,149,.10); --glow-b: rgba(214,160,92,.10);
+  --hazard: #D9A93A; --door: #3A3E39; --door-dark: #2C302B; --frame: #262925;
+  --inside: #0B0C0B; --inside-fg: #ECECE6;
+  --door-1: #3C4C41; --door-2: #3A4451; --door-3: #5B4E30; --door-4: #563C33; --door-5: #3B3E3A;
+  --paint: rgba(236, 236, 230, .62);
+  --lamp-off: #2E322D;
+  --night: #0A0B0A; --night-fg: #ECECE6; --night-mute: #6F736D;
+  --shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 24px 60px -30px rgba(0,0,0,.8);
+  color-scheme: dark;
+}
